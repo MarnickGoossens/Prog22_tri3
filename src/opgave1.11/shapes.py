@@ -14,11 +14,11 @@ class Rectangle:
         return a
 
     def get_perimeter(self):
-        p = 2 * width + 2 * height
+        p = 2 * self.width + 2 * self.height
         return p
 
     def get_diagonal(self):
-        d = (width**2 + height**2) ** 0.5
+        d = (self.width**2 + self.height**2) ** 0.5
         return d
 
     def get_picture(self):
