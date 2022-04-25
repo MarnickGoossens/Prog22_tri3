@@ -6,6 +6,9 @@ class Grouping:
 
     def __repr__(self):
         string = self.name.center(30, "*")
+        for dic in self.ledger:
+            for key, value in dic.items():
+                pass
         return string
 
     def print_ledger(self):
