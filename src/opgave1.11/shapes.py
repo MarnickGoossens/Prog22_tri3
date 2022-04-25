@@ -22,7 +22,11 @@ class Rectangle:
         return d
 
     def get_picture(self):
-        pass
+        string = ""
+        for rows in range(self.height):
+            stri = f"\n" + "*" * self.width
+            string += stri
+        return string
 
     def get_amount_inside(self):
         pass
