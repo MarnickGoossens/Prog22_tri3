@@ -8,23 +8,25 @@ class Grouping:
         string = self.name.center(30, "*")
         for dic in self.ledger:
             for key, value in dic.items():
-                pass
+                stri = f"\n{key[:23]:<23}{value:>7}"
+                string += stri
+        total = f"\n{'totaal':<23}{self.balance:>7}"
+        string += total
         return string
 
-    def print_ledger(self):
-        print(self.ledger)
-
     def deposit(self, amount, description=""):
+        amount = float(amount)
         self.balance += amount
         dictionary = {description: amount}
         self.ledger.append(dictionary)
 
     def withdraw(self, amount, description=""):
+        amount = float(amount)
         if self.balance < amount:
             return False
         elif self.balance > amount:
             self.balance -= amount
-            dictionary = {description: amount}
+            dictionary = {description: 0 - amount}
             self.ledger.append(dictionary)
             return True
 
@@ -32,10 +34,12 @@ class Grouping:
         return self.balance
 
     def transfer(self, amount, group):
+        amount = float(amount)
         group.withdraw(amount, "transfer")
-        self.deposit(amount)
+        self.deposit((0 - amount), f"Transfer to {group.name}")
 
     def check_funds(self, amount):
+        amount = float(amount)
         if self.balance < amount:
             return False
         else:
@@ -44,9 +48,3 @@ class Grouping:
 
 def create_spend_chart(groups):
     pass
-
-
-kleren = Grouping("kleren")
-kleren.deposit(1000, "first deposit")
-kleren.withdraw(100, "j&j")
-kleren.print_ledger()
