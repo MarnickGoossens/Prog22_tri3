@@ -35,8 +35,8 @@ class Grouping:
 
     def transfer(self, amount, group):
         amount = float(amount)
-        group.withdraw(amount, "transfer")
-        self.deposit((0 - amount), f"Transfer to {group.name}")
+        self.withdraw(amount, f"Transfer to {group.name}")
+        group.deposit(amount, "transfer")
 
     def check_funds(self, amount):
         amount = float(amount)
