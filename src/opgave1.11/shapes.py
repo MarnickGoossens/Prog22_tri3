@@ -3,6 +3,10 @@ class Rectangle:
         self.width = width
         self.height = height
 
+    def __repr__(self):
+        string = f"Rectangle(width={self.width}, heigth={self.height})"
+        return string
+
     def set_width(self, width):
         self.width = width
 
@@ -28,25 +32,32 @@ class Rectangle:
             string += stri
         return string
 
-    def get_amount_inside(self):
-        pass
+    def get_amount_inside(self, shape):
+        breedte = self.width // shape.width
+        hoogte = self.height // shape.height
+        aantal = breedte * hoogte
+        if aantal == 0:
+            return "Shape did not fit"
+        return aantal
 
 
 class Square(Rectangle):
-    def __init__(self, length):
-        super().__init__(width=length, height=length)
+    def __init__(self, side):
+        super().__init__(width=side, height=side)
 
-    def set_side(self, length):
-        self.width = length
-        self.height = length
+    def __repr__(self):
+        string = f"Square(side={self.width})"
+        return string
 
-    def set_width(self, length):
-        self.width = length
-        self.height = length
+    def set_side(self, side):
+        self.width = side
+        self.height = side
 
-    def set_height(self, length):
-        self.width = length
-        self.height = length
+    def set_width(self, side):
+        self.set_side(side)
+
+    def set_height(self, side):
+        self.set_side(side)
 
 
 class Diamond(Rectangle):
