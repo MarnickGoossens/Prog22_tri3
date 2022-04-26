@@ -15,13 +15,11 @@ class Grouping:
         return string
 
     def deposit(self, amount, description=""):
-        amount = float(amount)
         self.balance += amount
         dictionary = {description: amount}
         self.ledger.append(dictionary)
 
     def withdraw(self, amount, description=""):
-        amount = float(amount)
         if self.balance < amount:
             return False
         elif self.balance > amount:
@@ -34,12 +32,10 @@ class Grouping:
         return self.balance
 
     def transfer(self, amount, group):
-        amount = float(amount)
         self.withdraw(amount, f"Transfer to {group.name}")
         group.deposit(amount, "transfer")
 
     def check_funds(self, amount):
-        amount = float(amount)
         if self.balance < amount:
             return False
         else:
