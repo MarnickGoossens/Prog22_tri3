@@ -70,8 +70,10 @@ class Workshop:
             if person not in self.students:
                 if self.subject in person.interests:
                     self.students.append(person)
-                return f"{person.first_name} has no interests that maches with the workshop"
-            return f"{person.first_name} is already signed in!"
+                else:
+                    return f"{person.first_name} has no interests that maches with the workshop"
+            else:
+                return f"{person.first_name} is already signed in!"
 
     def update(self):
         for person in self.students:
