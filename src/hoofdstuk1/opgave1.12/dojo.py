@@ -57,8 +57,25 @@ class Workshop:
         self.Instructors = Instructors
         self.students = students
 
-    def add_participant(self):
-        pass
+    def add_participant(self, person):
+        if type(person) is Instructor:
+            if person not in self.Instructors:
+                if self.subject in person.skills:
+                    self.Instructors.append(person)
+                else:
+                    return f"{person.first_name} has no skill that maches with the workshop"
+            else:
+                return f"{person.first_name} is already signed in!"
+        if type(person) is Student:
+            if person not in self.students:
+                if self.subject in person.interests:
+                    self.students.append(person)
+                else:
+                    return f"{person.first_name} has no interests that maches with the workshop"
+            else:
+                return f"{person.first_name} is already signed in!"
 
     def update(self):
-        pass
+        for person in self.students:
+            if self.subject not in person.interests:
+                self.students.remove(person)
