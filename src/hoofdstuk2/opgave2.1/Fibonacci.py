@@ -1,15 +1,8 @@
-global diepte
-diepte = 0
+def fibonacci(n, diepte=0):
+    if n <= 2:
+        return 1
+    diepte += 1
+    return fibonacci(n - 1) + fibonacci(n - 2)
 
 
-def fibonacci(n):
-    if n <= 1:
-        return n
-    else:
-        global diepte
-        diepte += 1
-        print(diepte)
-        return fibonacci(n - 1) + fibonacci(n - 2)
-
-
-print(fibonacci(8))
+print(fibonacci(6))
