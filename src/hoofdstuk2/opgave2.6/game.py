@@ -33,7 +33,7 @@ class Board:
             self.grid.append([Cell(CHAR_BLANK)] * SQUARE_SIZE)
 
     def generate_mines(self, mine_number):
-        for i in range(10):
+        for i in range(mine_number):
             row = choice(self.grid)
             cell = choice(row)
             teken = cell.display_character
@@ -43,15 +43,23 @@ class Board:
                 teken = cell.display_character
             cell.display_character = "*"
 
-    def calculate_neighbouring_mines(self):
-        pass
+    def calculate_neighbouring_mines(self, row, col):
+        cell = self.grid[row][col]
+        for i in range(-1, 2):
+            for j in range(-1, 2):
+                try:
+                    cell_check = self.grid[i][j]
+                    if cell_check.display_character == "*":
+                        cell.neighbouring_mine_count += 1
+                except IndexError:
+                    continue
 
 
 class Cell:
     def __init__(self, display_character):
         self.is_revealed = False
         self.display_character = display_character
-        neighbouring_mine_count = 0
+        self.neighbouring_mine_count = 0
 
     def __repr__(self):
         return self.display_character
