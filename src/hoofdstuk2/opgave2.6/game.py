@@ -1,8 +1,4 @@
-from board import Board
-
-
 class Game:
-
     """Game loop of Minesweeper (already completed)"""
 
     def game_loop(self):
@@ -23,11 +19,22 @@ class Game:
 
 
 class Board:
-    pass
+    def __init__(self, CHAR_MINE="*", CHAR_BLANK="?", SQUARE_SIZE=9, MINE_NUMBER=9):
+        self.CHAR_MINE = CHAR_MINE
+        self.CHAR_BLANK = CHAR_BLANK
+        self.SQUARE_SIZE = SQUARE_SIZE
+        self.covered_cells = self.SQUARE_SIZE**2 - MINE_NUMBER
+        self.grid = []
+
+        for row in range(SQUARE_SIZE):
+            self.grid.append([f"{self.CHAR_MINE}" * SQUARE_SIZE])
 
 
 class Cell:
-    pass
+    def __init__(self, display_character):
+        self.is_revealed = False
+        self.display_character = display_character
+        neighbouring_mine_count = 0
 
 
 """
