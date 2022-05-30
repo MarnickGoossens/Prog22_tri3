@@ -1,3 +1,6 @@
+from random import choice
+
+
 class Game:
     """Game loop of Minesweeper (already completed)"""
 
@@ -27,7 +30,21 @@ class Board:
         self.grid = []
 
         for row in range(SQUARE_SIZE):
-            self.grid.append([f"{self.CHAR_MINE}" * SQUARE_SIZE])
+            self.grid.append([Cell(CHAR_BLANK)] * SQUARE_SIZE)
+
+    def generate_mines(self, mine_number):
+        for i in range(10):
+            row = choice(self.grid)
+            cell = choice(row)
+            teken = cell.display_character
+            while teken == "*":
+                row = choice(self.grid)
+                cell = choice(row)
+                teken = cell.display_character
+            cell.display_character = "*"
+
+    def calculate_neighbouring_mines(self):
+        pass
 
 
 class Cell:
@@ -35,6 +52,9 @@ class Cell:
         self.is_revealed = False
         self.display_character = display_character
         neighbouring_mine_count = 0
+
+    def __repr__(self):
+        return self.display_character
 
 
 """
