@@ -1,8 +1,10 @@
 from board import Board
 
-class Game():
 
-    """ Game loop of Minesweeper (already completed) """
+class Game:
+
+    """Game loop of Minesweeper (already completed)"""
+
     def game_loop(self):
         self.board.display_mines_grid()
         self.board.display_neighbouring_mines_grid()
@@ -18,6 +20,15 @@ class Game():
                 print(f"Bomb exploded!!!!")
                 self.board.display_mines()
                 break
+
+
+class Board:
+    pass
+
+
+class Cell:
+    pass
+
 
 """
 This will be executed when running the game.py file

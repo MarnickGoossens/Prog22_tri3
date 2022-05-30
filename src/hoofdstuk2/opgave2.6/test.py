@@ -1,6 +1,4 @@
-from cell import Cell
-from board import Board
-from game import Game
+from game import *
 
 """ 
 You can use this file if you want to check certain properties/methods.
